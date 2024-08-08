@@ -12,7 +12,7 @@ const OrderRouteMap = () => {
 
     useEffect(() => {
         const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBJTao2iTfRQFQ7sh4yX3jKwCChAun2qRw&libraries=places`; // Use your actual API key here
+        script.src = `https://maps.googleapis.com/maps/api/js?key=@Google-api-key &libraries=places`; // Use your actual API key here
         script.async = true;
         script.defer = true;
         document.head.appendChild(script);
