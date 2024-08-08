@@ -18,7 +18,7 @@ ReactDOM.render(
     <Router>
       <Provider store={store}>
         <App />
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOX7dM4i3ejEWk7t43ISYH9DDPuUKbhP0&libraries=places"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=@Googleapikey &libraries=places"></script>
       </Provider>
     </Router>
   </React.StrictMode>,
