@@ -1,0 +1,28 @@
+.table {
+    background-color: #f8f9fa;  
+    border-collapse: separate;
+    border-spacing: 0 15px; 
+
+.table th, .table td {
+    vertical-align: middle;
+    border-top: none;
+}
+
+.button {
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Customize buttons for better visual differentiation */
+.button-info {
+    background-color: #17a2b8;
+}
+
+.button-success {
+    background-color: #28a745;
+}
+}
