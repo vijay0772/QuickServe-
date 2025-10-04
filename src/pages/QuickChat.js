@@ -26,7 +26,8 @@ const ChatComponent = () => {
     setUserInput('');
 
     try {
-      const response = await axios.post('http://localhost:3002/api/getSuggestions', { query: userInput });
+      const apiBase = process.env.REACT_APP_API_BASE || '';
+      const response = await axios.post(`${apiBase}/api/getSuggestions`, { query: userInput });
       const botResponse = { user: 'Bot', text: response.data.suggestion || "I'm not sure how to respond.", timestamp: new Date().toLocaleTimeString() };
       setMessages(prevMessages => [...prevMessages, botResponse]);
     } catch (error) {
