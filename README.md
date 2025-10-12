@@ -13,8 +13,11 @@ QuickServe is a React-based food ordering app with a modern UI, browsing and fil
 - Product browsing, categories, filtering, pagination
 - Product detail page with quantity controls
 - Checkout page flow
-- Simple auth endpoints and user management API (Node/Express, MongoDB)
+- Authentication & JWT (login/register) with persona saved to token and localStorage
+- User management API (Node/Express, MongoDB)
+- Role-based navigation surface driven by persona
 - QuickChat page using an AI assistant (OpenAI) with optional weather/event context
+- Notifications, Orders, My Orders, Received Orders, Customer Queries, Manage Users
 - Responsive layout, header/footer, and themed assets
 
 ---
@@ -30,12 +33,39 @@ QuickServe is a React-based food ordering app with a modern UI, browsing and fil
 
 ## Project Structure
 - `src/pages/` – route pages like `Home`, `AllFoods`, `FoodDetails`, `Cart`, `Checkout`, `Login`, `Register`, `QuickChat`, etc.
+- Additional pages used by roles: `Orders`, `MyOrders`, `ReceivedOrders`, `Notifications`, `ManageUsers`, `CustomerQueries`, `OrderRouteMap`
 - `src/components/` – layout (`Header`, `Footer`), UI widgets (cards, categories, slider, cart overlay)
 - `src/store/` – Redux store and slices for shopping cart
 - `src/routes/Routers.js` – React Router v6 route definitions
 - `src/assets/` – images and fake product data
 - `src/api.js` – optional Express server for QuickChat AI endpoint
 - `public/` – CRA public assets and `index.html`
+
+---
+
+## Roles & Access (Personas)
+Users choose a persona at Register/Login. Persona is stored in JWT and used by the header to show relevant navigation and pages.
+
+- Customer
+  - Header links: My Orders, Notifications
+  - Core: browse foods, cart/checkout, order history
+- Restaurant
+  - Header links: Orders
+  - Core: view/manage incoming orders
+- Delivery Personnel
+  - Header links: Received Orders
+  - Core: view assigned orders; `OrderRouteMap` available for routing
+- System Administrator
+  - Header links: Manage Users
+  - Core: user listing, update, delete
+- Customer Support
+  - Header links: Customer Queries
+  - Core: view/respond to customer messages
+
+Implementation references:
+- Persona captured in Register/Login: `src/pages/Register.jsx`, `src/pages/Login.jsx`
+- Token returns persona; profile endpoint surfaces persona: `src/server.js` (`/api/login`, `/api/user-info`)
+- Header checks persona to render items: `src/components/Header/Header.jsx`
 
 ---
 
